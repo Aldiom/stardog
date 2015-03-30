@@ -1,9 +1,6 @@
-# commandParse.py
-
 from types import *
 from spaceship import *
 from parts import *
-from cargo import *
 from vec2d import Vec2d
 from SoundSystem import *
 import sys
@@ -22,7 +19,6 @@ try:
 except Exception as e:
     print(e)
 
-
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -31,6 +27,10 @@ class bcolors:
     FAIL = '\033[91m'
     ENDC = '\033[0m'
     WHITE = '\033'
+
+# RED = (255,0,0)
+# GREEN = (0,255,0)
+# BLUE = (0,0,255)
 
 
 class AttrFilter(object):
@@ -88,14 +88,14 @@ class CommandParse(object):
         if not args:
             return
         volume = eval(args[0])
-        setSFXVolume(volume)
+        self.game.soundSystem.setVolume(volume)
         print("sfx vol:"+str(SFX_VOLUME))
 
     def setMusicVolume(self, args):
         if not args:
             return
         volume = eval(args[0])
-        setMusicVolume(volume)
+        self.game.musicSystem.setVolume(volume)
         print("music vol:"+str(MUSIC_VOLUME))
 
     # prints pympler stats.
